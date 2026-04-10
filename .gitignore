@@ -44,7 +44,6 @@ next-env.d.ts
 .dev.vars
 .wrangler
 wrangler.toml
-wrangler.jsonc
 wrangler.email.toml
 wrangler.cleanup.toml
 
