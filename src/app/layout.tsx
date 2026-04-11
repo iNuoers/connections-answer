@@ -15,6 +15,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://connectionsanswers.today'),
     title: 'NYT Connections Answers & Analysis',
     description:
         "Today's NYT Connections answers, deep linguistic analysis, and interactive practice grid. Built for linguistic discovery and the global Connections community.",
