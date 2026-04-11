@@ -1,6 +1,6 @@
-import Script from 'next/script'
 import { Inter } from 'next/font/google'
 
+import { Analytics } from '@/components/app/analytics'
 import { ThemeProvider } from '@/components/app/provider/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
 
@@ -8,8 +8,6 @@ import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 
 import '@/styles/globals.css'
-
-const GA_ID = 'G-GLFW6WP55C'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -38,13 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <html lang='en' className={inter.variable} suppressHydrationWarning>
             <head>
                 <link rel='icon' href='/imgs/logo.svg' />
-                <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy='afterInteractive' />
-                <Script id='google-analytics' strategy='afterInteractive'>
-                    {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_ID}');`}
-                </Script>
+                <Analytics />
             </head>
             <body className={`font-sans antialiased bg-background text-foreground`}>
                 <ThemeProvider
