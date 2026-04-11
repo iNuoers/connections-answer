@@ -1,17 +1,29 @@
-import { AuthProvider } from '@/components/app/provider/auth-provider'
+import { Inter } from 'next/font/google'
+
 import { ThemeProvider } from '@/components/app/provider/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
-import { cn } from '@/lib'
-import { sfProDisplay, sfProText } from '@/styles/fonts'
 
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
 
 import '@/styles/globals.css'
 
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter'
+})
+
 export const metadata: Metadata = {
-    title: 'Gourd SME Frontend',
-    description: 'Production-ready Next.js scaffold'
+    title: 'NYT Connections Answers & Analysis',
+    description:
+        "Today's NYT Connections answers, deep linguistic analysis, and interactive practice grid. Built for linguistic discovery and the global Connections community.",
+    keywords: ['NYT Connections', 'Connections answers', 'word puzzle', 'linguistic analysis']
+}
+
+export const viewport: Viewport = {
+    themeColor: '#0e0e0e',
+    width: 'device-width',
+    initialScale: 1
 }
 
 type RootLayoutProps = {
@@ -20,11 +32,11 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <html lang='en' suppressHydrationWarning>
+        <html lang='en' className={inter.variable} suppressHydrationWarning>
             <head>
-                <link rel='icon' href='/imgs/favicon.ico' />
+                <link rel='icon' href='/imgs/logo.svg' />
             </head>
-            <body className={cn(sfProText.variable, sfProDisplay.variable, 'antialiased')}>
+            <body className={`font-sans antialiased bg-background text-foreground`}>
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
@@ -33,7 +45,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     disableTransitionOnChange
                 >
                     <div id='root'>
-                        <AuthProvider>{children}</AuthProvider>
+                        {children}
                         <Toaster richColors />
                     </div>
                 </ThemeProvider>
